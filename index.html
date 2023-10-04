@@ -3,42 +3,115 @@
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <script>
+
+            let amountOfTasks = 4;
+            let amountCompleted = 0;
+            let uniqueID = 5;
+
+            function update ()
+            {
+                if (amountOfTasks-amountCompleted > 1)
+                document.getElementById("counter").innerHTML
+                    = "Do these " + (amountOfTasks-amountCompleted) + " things and more in order to un-suffer from life.";
+                else if (amountOfTasks-amountCompleted == 1)
+                document.getElementById("counter").innerHTML
+                    = "Do the thing! You are almost done with suffering!";
+                else
+                document.getElementById("counter").innerHTML
+                    = "Now go outside and mow the lawn!";
+
+                if (amountOfTasks == 0)
+                document.getElementById("counter").innerHTML
+                    = "Wait, that's illegal.";
+            }
+
             function completed (name)
             {
-                console.log(name);
-                let wee = document.getElementById(name).innerHTML;
-                wee = wee.substring(wee.lastIndexOf('>')+1);
-                document.getElementById(name).innerHTML =
-                    '<input type="checkbox" checked=true; onclick="uncompleted(\''+ name +'\');">'+ wee;
-
                 const str = document.createAttribute("style");
                 str.value = "text-decoration: line-through;";
 
+                const buttons = document.createAttribute("onclick");
+                buttons.value = "uncompleted(" + name + ")";
+
                 document.getElementById(name).setAttributeNode(str);
+                document.getElementById("c" + name).setAttributeNode(buttons);
+
+                amountCompleted++;
+                update();
 
             }
 
             function uncompleted (name)
             {
-                console.log(name);
-                let wee = document.getElementById(name).innerHTML;
-                wee = wee.substring(wee.lastIndexOf('>')+1);
-                document.getElementById(name).innerHTML =
-                    '<input type="checkbox"; onclick="completed(\''+ name +'\');">'+ wee;
-
-                const str = document.createAttribute("style");
-                str.value = "text-decoration: line-through;";
-
                 document.getElementById(name).removeAttribute("style");
+
+                const buttons = document.createAttribute("onclick");
+                buttons.value = "completed(" + name + ")";
+
+                document.getElementById("c" + name).setAttributeNode(buttons);
+
+                amountCompleted--;
+                update();
             }
             
             function add ()
             {
-                document.getElementById("list").innerHTML += '<li id="item4"><input type="checkbox" onclick="completed(\'item4\')"> Profit and beat Elon Musk at his game.</li>';
+                str = document.getElementById("ntext").value;
+
+                if (str == "")
+                {
+                    document.getElementById("ntext").value = "Something should be here!";
+                    textyes();
+                    return;
+                }
+
+                amountOfTasks++;
+
+                document.getElementById("list").innerHTML +=
+                '<li id="' + uniqueID + '">' +
+                    '<input type="button" value="Add Subtask">' +
+                    '<input type="button" value="Remove" onclick="remove(\'' + uniqueID + '\')">' +
+                    '<input id="c' + uniqueID + '" type="checkbox" onclick="completed(\'' + uniqueID + '\')"> '  + str + 
+                '</li>';
+
+                uniqueID++;
+
+                document.getElementById("ntext").value = null;
+                update();
+                textyes();
             }
+
             function remove (name)
             {
+                
+                amountOfTasks--;
+
+                if (document.getElementById(name).getAttributeNode("style") != null)
+                    amountCompleted--;
+
                 document.getElementById(name).remove();
+
+                update();
+            }
+
+            function textyes ()
+            {
+                str = document.getElementById("ntext").value;
+
+                if (str == "")
+                {
+                    const str = document.createAttribute("style");
+                    str.value = "background-color: grey;";
+
+                    document.getElementById("nbutton").setAttributeNode(str);
+                }
+                else
+                {
+                const str = document.createAttribute("style");
+                str.value = "background-color: white;";
+
+                document.getElementById("nbutton").setAttributeNode(str);
+                }
             }
         </script>
         <style>
@@ -66,14 +139,34 @@
     
     <body>
         <h1>How to un-become the ultimate sufferer?</h1>
-        <p>Do these things and more in order to un-suffer from life.</p>
+        <p id="counter">Do these 4 things and more in order to un-suffer from life.</p>
         
             <ul style="list-style-type: none;" id="list">
-                <li id="item1"><input type="checkbox" onclick="completed('item1')"> Do my homework.</li>
-                <li id="item2"><input type="checkbox" onclick="completed('item2')"> Suffer a bit more.</li>
-                <li id="item3"><input type="checkbox" onclick="completed('item3')"> Find the meaning of life.</li>
-                <li id="item4"><input type="checkbox" onclick="remove('item4')"> Profit and beat Elon Musk at his game.</li>
+                <li id="1">
+                    <input type="button" value="Add Subtask">
+                    <input type="button" value="Remove" onclick="remove('1')">
+                    <input id="c1" type="checkbox" onclick="completed('1')"> Do my homework.
+                </li>
+                <li id="2">
+                    <input type="button" value="Add Subtask">
+                    <input type="button" value="Remove" onclick="remove('2')">
+                    <input id="c2" type="checkbox" onclick="completed('2')"> Suffer a bit more.
+                </li>
+                <li id="3">
+                    <input type="button" value="Add Subtask">
+                    <input type="button" value="Remove" onclick="remove('3')">
+                    <input id="c3" type="checkbox" onclick="completed('3')"> Find the meaning of life.
+                </li>
+                <li id="4">
+                    <input type="button" value="Add Subtask">
+                    <input type="button" value="Remove" onclick="remove('4')">
+                    <input id="c4" type="checkbox" onclick="completed('4')"> Profit and beat Elon Musk at his game.
+                </li>
             </ul>
+            <p style="margin-top: 250px;">Need a new thing todo? Submit your will to suffer here and watch it pile up as you procrastinate!
+                <p><input id ="ntext" style="width: 350px;";type=text placeholder="New Task" oninput="textyes()" ></p>
+                <p> <input id="nbutton" style="background-color: grey; " type="button" value="Submit" onclick="add()" ></p>
+            </p>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
