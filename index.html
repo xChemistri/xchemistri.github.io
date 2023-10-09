@@ -96,16 +96,18 @@
                         let ul = document.getElementById("ul" + name);
 
                         ul.innerHTML +=
-                            ('<li id="st' + uniqueSID + '">' +
+                            ('<li id="st' + uniqueSID + '"><div class="buttons">' +
                                 '<input id="stb' + uniqueSID + '" type="button" onclick="subtaskcompleted(\'' + uniqueSID + '\')" value=Completed? class="unchecked"> ' +
+                                '<input type="button" value="Remove" onclick="subtaskremove(\'st' + uniqueSID + '\')" class="deletebutton"></div>\t' +
                             + document.getElementById("cs" + name).value + "</li>");
                     }
                     else
                     {
                         document.getElementById(name).innerHTML +=
                         (
-                            '<ul><li id="st' + uniqueSID + '">' +
+                            '<ul><li id="st' + uniqueSID + '"><div class="buttons">' +
                                 '<input id="stb' + uniqueSID + '" type="button" onclick="subtaskcompleted(\'' + uniqueSID + '\')" value=Completed? class="unchecked"> ' +
+                                '<input type="button" value="Remove" onclick="subtaskremove(\'st' + uniqueSID + '\')" class="deletebutton"></div>\t' +
                             document.getElementById("cs" + name).value + '</li></ul>'
                         )
                     }
@@ -264,6 +266,13 @@
                 update();
             }
 
+            function subtaskremove (name)
+            {
+                document.getElementById(name).remove();
+
+                update();
+            }
+
             function textyes ()
             {
                 str = document.getElementById("ntext").value;
@@ -294,6 +303,7 @@
             padding-left: 30px;
             transition-duration: 1s;
             background: rgb(38, 0, 0);
+            padding-top: 50px;
         }
 
         .almost
@@ -304,6 +314,7 @@
             padding-left: 30px;
             transition-duration: 1s;
             background: rgb(0, 64, 83);
+            padding-top: 50px;
         }
         .goodending
         {
@@ -313,6 +324,7 @@
             padding-left: 30px;
             transition-duration: 1s;
             background: rgb(0, 85, 122);
+            padding-top: 50px;
         }
 
         .standard
@@ -323,6 +335,7 @@
             padding-right: 60px;
             padding-left: 30px;
             transition-duration: 1s;
+            padding-top: 50px;
         }
 
         .priority1
