@@ -7,23 +7,51 @@
             let amountOfTasks = 4;
             let amountCompleted = 0;
             let uniqueID = 5;
-            let uniqueSID = 0;
-
+            let uniqueSID = 1;
+            
             function update ()
             {
                 if (amountOfTasks-amountCompleted > 1)
-                document.getElementById("counter").innerHTML
-                    = "Do these <b>" + (amountOfTasks-amountCompleted) + "</b> things and more in order to un-suffer from life.";
+                {
+                    document.getElementById("counter").innerHTML
+                        = "Do these <b>" + (amountOfTasks-amountCompleted) + "</b> things and more in order to un-suffer from life.";
+
+                    let easteregg = document.createAttribute("class");
+                    easteregg.value = "standard";
+
+                    document.getElementById("hehe").setAttributeNode(easteregg);
+                }
                 else if (amountOfTasks-amountCompleted == 1)
-                document.getElementById("counter").innerHTML
-                    = "Do the thing! You are almost done with suffering!";
+                {
+                    document.getElementById("counter").innerHTML
+                        = "Do the thing! You are almost done with suffering!";
+
+                    let easteregg = document.createAttribute("class");
+                    easteregg.value = "almost";
+
+                    document.getElementById("hehe").setAttributeNode(easteregg);
+                }
                 else
-                document.getElementById("counter").innerHTML
-                    = "Now go outside and mow the lawn!";
+                {
+                    document.getElementById("counter").innerHTML
+                        = "Be the happy.";
+                
+                    let easteregg = document.createAttribute("class");
+                    easteregg.value = "goodending";
+
+                    document.getElementById("hehe").setAttributeNode(easteregg);
+                }
 
                 if (amountOfTasks == 0)
-                document.getElementById("counter").innerHTML
-                    = "Wait, that's illegal.";
+                {
+                    document.getElementById("counter").innerHTML
+                    = "Activating DOOM Mode.";
+
+                    let easteregg = document.createAttribute("class");
+                    easteregg.value = "easteregg";
+
+                    document.getElementById("hehe").setAttributeNode(easteregg);
+                }
             }
 
             function summonSubtask (name)
@@ -69,25 +97,27 @@
 
                         ul.innerHTML +=
                             ('<li id="st' + uniqueSID + '">' +
+                                '<input id="stb' + uniqueSID + '" type="button" onclick="subtaskcompleted(\'' + uniqueSID + '\')" value=Completed? class="unchecked"> ' +
                             + document.getElementById("cs" + name).value + "</li>");
                     }
                     else
                     {
                         document.getElementById(name).innerHTML +=
                         (
-                            '<ul id="ul + ' + name + '"><li>' +
+                            '<ul><li id="st' + uniqueSID + '">' +
+                                '<input id="stb' + uniqueSID + '" type="button" onclick="subtaskcompleted(\'' + uniqueSID + '\')" value=Completed? class="unchecked"> ' +
                             document.getElementById("cs" + name).value + '</li></ul>'
                         )
                     }
                 }
 
-                
+                uniqueSID++;
             }   
 
             function completed (name)
             {
                 const str = document.createAttribute("style");
-                str.value = "text-decoration: line-through;";
+                str.value = "text-decoration: line-through; color: darkgrey;";
 
                 const buttons = document.createAttribute("onclick");
                 buttons.value = "uncompleted(" + name + ")";
@@ -95,7 +125,7 @@
                 const style = document.createAttribute("class");
                 style.value = "checked";
 
-                document.getElementById(name).setAttributeNode(str);
+                document.getElementById("" + name).setAttributeNode(str);
                 document.getElementById("c" + name).setAttributeNode(buttons);
                 document.getElementById("c" + name).setAttributeNode(style);
                 document.getElementById("c" + name).value = "Completed!";
@@ -108,41 +138,37 @@
             function subtaskcompleted (name)
             {
                 const str = document.createAttribute("style");
-                str.value = "text-decoration: line-through;";
+                str.value = "text-decoration: line-through;  color: darkgrey;";
 
                 const buttons = document.createAttribute("onclick");
-                buttons.value = "uncompleted(" + name + ")";
+                buttons.value = "subtaskuncompleted(" + name + ")";
 
                 const style = document.createAttribute("class");
                 style.value = "checked";
 
-                document.getElementById(name).setAttributeNode(str);
-                document.getElementById("st" + name).setAttributeNode(buttons);
-                document.getElementById("st" + name).setAttributeNode(style);
-                document.getElementById("st" + name).value = "Completed!";
+                document.getElementById("st" + name).setAttributeNode(str);
+                document.getElementById("stb" + name).setAttributeNode(buttons);
+                document.getElementById("stb" + name).setAttributeNode(style);
+                document.getElementById("stb" + name).value = "Completed!";
 
-                amountCompleted++;
                 update();
 
             }
 
             function subtaskuncompleted (name)
             {
-                const str = document.createAttribute("style");
-                str.value = "text-decoration: line-through;";
+                document.getElementById("st" + name).removeAttribute("style");
 
                 const buttons = document.createAttribute("onclick");
-                buttons.value = "uncompleted(" + name + ")";
+                buttons.value = "subtaskcompleted(" + name + ")";
 
                 const style = document.createAttribute("class");
-                style.value = "checked";
+                style.value = "unchecked";
 
-                document.getElementById(name).setAttributeNode(str);
-                document.getElementById("st" + name).setAttributeNode(buttons);
-                document.getElementById("st" + name).setAttributeNode(style);
-                document.getElementById("st" + name).value = "Completed!";
+                document.getElementById("stb" + name).setAttributeNode(buttons);
+                document.getElementById("stb" + name).setAttributeNode(style);
+                document.getElementById("stb" + name).value = "Completed?";
 
-                amountCompleted++;
                 update();
 
             }
@@ -191,7 +217,7 @@
                     '<li id="' + uniqueID + '"><div class="buttons">' +
                     '<input type="button" value="Add Subtask" class="subtaskbutton" id="cs'+ uniqueID + '" onclick="summonSubtask(\'' + uniqueID + '\')">\t' +
                     '<input type="button" value="Remove" onclick="remove(\'' + uniqueID + '\')" class="deletebutton">\t' +
-                    '<input id="c' + uniqueID + '" type="button" onclick="completed(\'' + uniqueID + '\')" value=Completed? class="unchecked"> "DUE: ' +  taskdate.toDateString() + '"</div>'  + str + 
+                    '<input id="c' + uniqueID + '" type="button" onclick="completed(\'' + uniqueID + '\')" value=Completed? class="unchecked"> DUE: ' +  taskdate.toDateString() + '</div>'  + str + 
                     '</li><div style="clear:both"></div>';
                 }
                 else
@@ -259,13 +285,44 @@
             }
         </script>
         <style>
-        body
+        
+        .easteregg
+        {   
+            color: white;
+            text-align: center;
+            padding-right: 60px;
+            padding-left: 30px;
+            transition-duration: 1s;
+            background: rgb(38, 0, 0);
+        }
+
+        .almost
+        {
+            color: white;
+            text-align: center;
+            padding-right: 60px;
+            padding-left: 30px;
+            transition-duration: 1s;
+            background: rgb(0, 64, 83);
+        }
+        .goodending
+        {
+            color: white;
+            text-align: center;
+            padding-right: 60px;
+            padding-left: 30px;
+            transition-duration: 1s;
+            background: rgb(0, 85, 122);
+        }
+
+        .standard
         {
             color: white;
             text-align: center;
             background: rgb(2, 0, 36);
             padding-right: 60px;
             padding-left: 30px;
+            transition-duration: 1s;
         }
 
         .priority1
@@ -305,8 +362,7 @@
             border-color: rgb(255, 255, 255, 0.6);
             background: rgb(0, 0, 0, 0.3);
             color: white;
-            transition-duration: 1s;
-            
+            transition-duration: 0.5s;
         }
 
         .buttons
@@ -367,7 +423,7 @@
         
     </head>
     
-    <body>
+    <body class="standard" id="hehe">
         <h1>How to un-become the ultimate sufferer?</h1>
         <p id="counter">Do these <b>4</b> things and more in order to un-suffer from life.</p>
         
