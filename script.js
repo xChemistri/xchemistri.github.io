@@ -213,7 +213,7 @@ function flightselected (value)
         case "WestJet":
             document.getElementById("carryOnSize").innerHTML = "22in x 14in x 9in";
             document.getElementById("personalItemSize").innerHTML = "17in x 13in x 6in";
-            document.getElementById("maxWeight").innerHTML = "22lv";
+            document.getElementById("maxWeight").innerHTML = "22lb";
             break;
         default:
             document.getElementById("carryOnSize").innerHTML = "N/A";
@@ -221,8 +221,3 @@ function flightselected (value)
             document.getElementById("maxWeight").innerHTML = "N/A";
     }
 }
-
-// note to self:
-// id = carryOnSize
-// personalItemSize
-// maxWeight
