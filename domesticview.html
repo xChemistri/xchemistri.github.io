@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Airline Baggage Information</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div>
+  <ul class="topMenu">
+    <li>Domestic Flights</li>
+    <li><a href="internationalview.html">International Flights</a></li>
+    <li><a href="listview.html">List View</a></li>
+  </ul>
+</div>
+
+<div class="container">
+  <h1>Domestic Baggage Rules</h1>
+  
+  <div class="select">
+    <label for="airlineSelect">Select Airline:</label>
+    <select id="airlineSelect" class="dropdownMenu" onchange="flightselected(this.value)">
+      <option value="">== Please Select An Airline ==</option>
+      <option value="JetBlue">JetBlue Airways</option>
+      <option value="United">United Airlines</option>
+      <option value="Delta">Delta Airlines</option>
+      <option value="American">American Airlines</option>
+      <option value="SouthWest">SouthWest Airlines</option>
+    </select>
+</div>
+
+
+  <div id="baggageInfo">
+    <h2>Baggage Information</h2>
+    <p><strong>Carry-on Size:</strong> <span id="carryOnSize">N/A</span></p>
+    <p><strong>Personal Item Size:</strong> <span id="personalItemSize">N/A</span></p>
+    <p><strong>Maximum Weight:</strong> <span id="maxWeight">N/A</span></p>
+  </div>
+</div>
+
+<p style="text-align: center;"><a href="easteregg.html">Insanity 2023, Do Not Distribute</a></p>
+<script src="script.js"></script>
+</body>
+</html>

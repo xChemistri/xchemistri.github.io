@@ -1,0 +1,81 @@
+body {
+  font-family: Arial, sans-serif;
+}
+  
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  }
+  
+#baggageInfo {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 20px;
+}
+  
+button {
+    margin-top: 10px;
+  padding: 5px 10px;
+}
+  
+select {
+  padding: 5px;
+  margin: 10px 0;
+}
+
+.topMenu {
+  background-color: #cccccc;
+  overflow: hidden;
+  text-align: center;
+  display: block;
+  list-style-type: none;
+  border-radius: 10px;
+}
+
+
+.topMenu li:hover {
+  background: #666666;
+  color: white;
+}
+
+.topMenu li {
+  display: inline-block;
+  padding: 10px;
+  transition-duration: 300ms;
+}
+
+.select
+{
+  background-color: #cccccc;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.dropdownMenu
+{
+  background-color: #666666;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  
+}
+
+.paddingForList
+{
+  padding-bottom: 5px;
+}
+.list
+{
+  text-align: center;
+  list-style-type: none;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background: #cccccc;
+  text-align: center;
+  border-radius: 10px;
+  border-color: white;
+  border-width: 5px;
+}
