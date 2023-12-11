@@ -224,7 +224,7 @@ function flightselected (value)
     updateMeasurements(currentUnit);
 }
 
-var currentUnit = 'imperial'; // Keep track of the current unit
+var currentUnit = 'imperial'; // Keep track of the current unit displayed on page, imperial by default
 
 // Function to store the original imperial values
 function storeOriginalValues() {

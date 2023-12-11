@@ -1,84 +1,96 @@
 body {
-    font-family: Arial, sans-serif;
-  }
-    
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px;
-    }
-    
-  #baggageInfo {
-    margin-top: 20px;
-    border: 1px solid #39f7fe;
-    padding: 10px;
-    border-radius: 20px;
-  }
-    
-  button {
-      margin-top: 10px;
-    padding: 5px 10px;
-  }
-    
-  select {
-    padding: 5px;
-    margin: 10px 0;
-  }
-  
-  .topMenu {
-    background-color: #bce7ff;
-    overflow: hidden;
-    text-align: center;
-    display: block;
-    list-style-type: none;
-    border-radius: 10px;
-  }
-  
-  
-  .topMenu li:hover {
-    background: #00fbff;
-    color: rgb(51, 11, 170);
-  }
-  
-  .topMenu li {
-    display: inline-block;
-    padding: 10px;
-    transition-duration: 300ms;
-  }
-  
-  .select
-  {
-    background-color: #e9abff;
-    text-align: center;
-    border-radius: 10px;
-  }
-  
-  .dropdownMenu
-  {
-    background-color: #65c7ff;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    border-radius: 10px;
-    
-  }
-  
-  .paddingForList
-  {
-    padding-bottom: 5px;
-  }
-  .list
-  {
-    text-align: center;
-    list-style-type: none;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    background: #ffbbbb;
-    text-align: center;
-    border-radius: 10px;
-    border-color: rgb(4, 243, 48);
-    border-width: 5px;
-  }
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #73ceff, #ffffff);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #333;
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#baggageInfo {
+  margin-top: 20px;
+  border: 1px solid #39f7fe;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+}
+
+select {
+  padding: 5px;
+  margin: 10px 0;
+}
+
+.topMenu {
+  margin: 0;
+  padding: 0;
+  background-color: #bce7ff;
+  overflow: hidden;
+  text-align: center;
+  display: block;
+  list-style-type: none;
+}
+
+.topMenu li:hover {
+  display: inline-block;
+  background: #00fbff;
+  color: rgb(51, 11, 170);
+  border-radius: 10px;
+}
+
+.topMenu li {
+  display: inline-block;
+  padding: 10px;
+  transition-duration: 300ms;
+}
+
+.select {
+  background-color: #e9abff;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.dropdownMenu {
+  background-color: #65c7ff;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  border-radius: 10px;
+}
+
+.paddingForList {
+  padding-bottom: 5px;
+}
+
+.list {
+  text-align: center;
+  list-style-type: none;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background: #ffbbbb;
+  text-align: center;
+  border-radius: 10px;
+  border-color: rgb(4, 243, 48);
+  border-width: 5px;
+}
 
 .list.highlight{
   background: #2df006af;
